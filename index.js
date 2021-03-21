@@ -20,6 +20,8 @@ const defaultNormalizers = {
   normalizeMethod,
 };
 
+const signalIsNotUp = () => {if(metrics["up"]) metrics["up"].set(0)}
+const signalIsUp = () => {if(metrics["up"]) metrics["up"].set(1)}
 const metrics = {}
 
 // function normalizeStatusCode(status) {
@@ -153,4 +155,6 @@ const metricsMiddleware = function(request, response, next) {
 
 export {
     createMiddleware,
+    signalIsNotUp,
+    signalIsUp
 };

@@ -1,7 +1,6 @@
 import UrlValueParser from 'url-value-parser';
 import url from 'url';
 import client from 'prom-client'
-// import memwatch from '@airbnb/node-memwatch';
 
 const urlValueParser = new UrlValueParser();
 
@@ -47,9 +46,6 @@ const defaultOptions = {
   metricPrefix: '',
   metricTypes: 'histogram', // summary
   metricNames: {
-  //   countOfGcs: ['nodejs_gc_runs_total'],
-  //   durationOfGc: ['nodejs_gc_pause_seconds_total'],
-  //   reclaimedInGc: ['nodejs_gc_reclaimed_bytes_total'],
     httpRequestsTotal: 'http_requests_total',
     httpRequestDurationPerPercentile: 'http_request_duration_per_percentile_seconds',
     httpRequestDuration: 'http_request_duration_seconds',
@@ -128,7 +124,7 @@ const createMiddleware = (options) => {
             res: response,
           }),
         },
-        // allDefaultedOptions.getLabelValues?.(request, response)
+        options.getLabelValues?.(request, response)
       );
 
       end(labels)

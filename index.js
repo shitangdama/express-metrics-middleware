@@ -22,23 +22,24 @@ const defaultNormalizers = {
 
 const signalIsNotUp = () => {if(metrics["up"]) metrics["up"].set(0)}
 const signalIsUp = () => {if(metrics["up"]) metrics["up"].set(1)}
-const metrics = {}
 
 // function normalizeStatusCode(status) {
-//     if (status >= 200 && status < 300) {
-//       return '2XX';
-//     }
-  
-//     if (status >= 300 && status < 400) {
-//       return '3XX';
-//     }
-  
-//     if (status >= 400 && status < 500) {
-//       return '4XX';
-//     }
-  
-//     return '5XX';
+//   if (status >= 200 && status < 300) {
+//     return '2XX';
 //   }
+
+//   if (status >= 300 && status < 400) {
+//     return '3XX';
+//   }
+
+//   if (status >= 400 && status < 500) {
+//     return '4XX';
+//   }
+
+//   return '5XX';
+// }
+
+const metrics = {}
 
 const defaultOptions = {
   getLabelValues: () => ({}),
@@ -133,10 +134,6 @@ const createMiddleware = (options) => {
       end(labels)
       metrics.httpRequestsTotal.inc(labels, 1)
     })
-    
-    // memwatch.on('stats', function(d) {
-    //   console.log("postgc:", d);
-    // });
 
     return next();
   }
@@ -156,5 +153,5 @@ const metricsMiddleware = function(request, response, next) {
 export {
     createMiddleware,
     signalIsNotUp,
-    signalIsUp
+    signalIsUp,
 };

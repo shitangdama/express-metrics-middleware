@@ -124,7 +124,7 @@ const createMiddleware = (options) => {
             res: response,
           }),
         },
-        options.getLabelValues?.(request, response)
+        options.getLabelValues(request, response)
       );
 
       end(labels)

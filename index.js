@@ -1,7 +1,7 @@
-import UrlValueParser from 'url-value-parser';
-import url from 'url';
-import client from 'prom-client'
-import merge from 'merge-options';
+const UrlValueParser = require('url-value-parser');
+const url = require('url');
+const client = require('prom-client');
+const merge = require('merge-options');
 
 const urlValueParser = new UrlValueParser();
 
@@ -146,7 +146,7 @@ const metricsMiddleware = function(request, response, next) {
   client.register.metrics().then(output => sendSuccesss(output)).catch(err => next(err));
 };
 
-export {
+exports.default = {
     createMiddleware,
     signalIsNotUp,
     signalIsUp,

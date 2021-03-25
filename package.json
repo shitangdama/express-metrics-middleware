@@ -1,13 +1,12 @@
 {
   "name": "express-metrics-middleware",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "main": "index.js",
-  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "shitangdama",
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1",

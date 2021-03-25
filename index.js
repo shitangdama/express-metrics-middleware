@@ -1,6 +1,7 @@
 import UrlValueParser from 'url-value-parser';
 import url from 'url';
 import client from 'prom-client'
+import merge from 'merge-options';
 
 const urlValueParser = new UrlValueParser();
 
@@ -8,7 +9,7 @@ const normalizePath = (path) => urlValueParser.replacePathValues(url.parse(path)
 const normalizeMethod = (method) => method.toLowerCase();
 const normalizeStatusCode = (statusCode) => statusCode;
 const extractPath = (req) => req.originalUrl || req.url;
-const merge = (a, b) => Object.assign({}, a, b);
+// const merge = (a, b) => Object.assign({}, a, b);
 const isSkipPath = (arr, str) => arr?arr.some(item=> item===str):false
 const defaultLabels = ['path', 'status_code', 'method'];
 const defaultDurationPercentile = [0.5, 0.9, 0.95, 0.98, 0.99];
@@ -54,7 +55,6 @@ const defaultOptions = {
 }
 
 const createMetric = (options) => {
-  // 这里的object 要挂到 options 下面比较好
   metrics["up"] = new client.Gauge({
     name: `${options.metricPrefix}up`,
     help: '1 = up, 0 = not up',

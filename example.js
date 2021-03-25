@@ -2,7 +2,7 @@ import express from 'express'
 import { createMiddleware } from "./index.js"
 const app = express()
 
-const data = createMiddleware(app, {
+const data = createMiddleware({
   metricPrefix: "test"
 })
 app.use(data)

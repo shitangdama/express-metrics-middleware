@@ -1,8 +1,8 @@
-import express from 'express'
-import { createMiddleware } from "./index.js"
+const express = require('express')
+const test = require("./index.js")
 const app = express()
 
-const data = createMiddleware({
+const data = test.createMiddleware({
   metricPrefix: "test"
 })
 app.use(data)

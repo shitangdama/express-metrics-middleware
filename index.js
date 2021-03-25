@@ -42,7 +42,6 @@ const signalIsUp = () => {if(metrics["up"]) metrics["up"].set(1)}
 const metrics = {}
 
 const defaultOptions = {
-  getLabelValues: () => ({}),
   labels: [],
   metricPrefix: '',
   metricTypes: 'histogram', // summary
@@ -124,7 +123,6 @@ const createMiddleware = (options) => {
             res: response,
           }),
         },
-        options.getLabelValues(request, response)
       );
 
       end(labels)
@@ -146,8 +144,6 @@ const metricsMiddleware = function(request, response, next) {
   client.register.metrics().then(output => sendSuccesss(output)).catch(err => next(err));
 };
 
-exports.default = {
-    createMiddleware,
-    signalIsNotUp,
-    signalIsUp,
-};
+exports.createMiddleware = createMiddleware;
+exports.signalIsNotUp = signalIsNotUp;
+exports.signalIsUp = signalIsUp;

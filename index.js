@@ -105,7 +105,7 @@ const createMiddleware = (options) => {
         return next()
     }
 
-    const end = metrics.httpRequestDuration.startTimer()
+    const end = metrics["httpRequestDuration"].startTimer()
     response.on('finish', () => {
       const labels = Object.assign(
         {},
@@ -126,7 +126,7 @@ const createMiddleware = (options) => {
       );
 
       end(labels)
-      metrics.httpRequestsTotal.inc(labels, 1)
+      metrics["httpRequestsTotal"].inc(labels, 1)
     })
 
     return next();

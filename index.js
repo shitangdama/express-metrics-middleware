@@ -147,3 +147,4 @@ const metricsMiddleware = function(request, response, next) {
 exports.createMiddleware = createMiddleware;
 exports.signalIsNotUp = signalIsNotUp;
 exports.signalIsUp = signalIsUp;
+exports.client = client;
